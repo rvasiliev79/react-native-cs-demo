@@ -1,14 +1,42 @@
-import { Text, View, Image, TouchableOpacity, StyleSheet } from "react-native";
+import { useState } from "react";
+import {
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  Alert,
+} from "react-native";
 import icon1 from "../assets/cafe-black-48dp.png";
 
 const Selection = (props) => {
+  const [countofitems, countofitemshandler] = useState([0, 0, 0, 0, 0, 0]);
+
+  function itemonpress(index) {
+    console.log(a[index].name);
+    console.log(countofitems[index]);
+    countofitems[index]++;
+
+    countofitemshandler((prevarray) => [...prevarray, ...countofitems]);
+  }
+
   return (
     <View style={styles.mainview}>
-      {props.items.map((item) => (
-        <TouchableOpacity style={styles.item}>
-          <View key={Math.random()}>
+      {props.items.map((item, index) => (
+        <TouchableOpacity
+          key={index}
+          style={styles.item}
+          onPress={() => itemonpress(index)}
+        >
+          <View>
             <Image source={icon1}></Image>
-            <Text>{item}</Text>
+            <Text>
+              {item.name}
+              {index}
+            </Text>
+          </View>
+          <View style={styles.qty}>
+            <Text>{countofitems[index]}</Text>
           </View>
         </TouchableOpacity>
       ))}
@@ -29,6 +57,10 @@ const styles = StyleSheet.create({
   item: {
     padding: 10,
     width: "40%",
+  },
+  qty: {
+    backgroundColor: "red",
+    fontSize: 18,
   },
 });
 

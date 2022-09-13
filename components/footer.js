@@ -1,10 +1,25 @@
-import { View, StyleSheet, TextInput, Button } from "react-native";
+import { useState } from "react";
+import { View, StyleSheet, TextInput, Button, Alert } from "react-native";
 
 const Footer = (props) => {
+  const [AddressValue, setAddressValue] = useState("");
+
+  function AddressHandler(enteredValue) {
+    setAddressValue(enteredValue);
+  }
+
+  function OrderButtonHandler() {
+    Alert.alert(AddressValue);
+  }
+
   return (
     <View style={styles.footerview}>
-      <TextInput style={styles.inputtext} placeholder={props.hinttext} />
-      <Button title={props.buttontext} />
+      <TextInput
+        style={styles.inputtext}
+        placeholder={props.hinttext}
+        onChangeText={AddressHandler}
+      />
+      <Button title={props.buttontext} onPress={OrderButtonHandler} />
     </View>
   );
 };
