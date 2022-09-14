@@ -4,12 +4,14 @@ import { View, StyleSheet, TextInput, Button, Alert } from "react-native";
 const Footer = (props) => {
   const [AddressValue, setAddressValue] = useState("");
 
+  function calcamount() {}
+
   function AddressHandler(enteredValue) {
     setAddressValue(enteredValue);
   }
 
   function OrderButtonHandler() {
-    Alert.alert(AddressValue);
+    Alert.alert(countofitems.length.toString());
   }
 
   return (

@@ -30,6 +30,7 @@ global.a = [
   { id: 4, name: "Americano", price: 50, qty: 0 },
   { id: 5, name: "Mikshake", price: 60, qty: 0 },
 ];
+global.countofitems = [0, 0, 0, 0, 0, 0];
 
 const styles = StyleSheet.create({
   container: {

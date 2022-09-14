@@ -13,11 +13,17 @@ const Selection = (props) => {
   const [countofitems, countofitemshandler] = useState([0, 0, 0, 0, 0, 0]);
 
   function itemonpress(index) {
-    console.log(a[index].name);
-    console.log(countofitems[index]);
-    countofitems[index]++;
-
-    countofitemshandler((prevarray) => [...prevarray, ...countofitems]);
+    const total = countofitems.reduce(
+      (sum, currentval) => (sum = sum + currentval),
+      0
+    );
+    if (total > 20) {
+      Alert.alert("You cannot drink more then 20 cups %)");
+    } else {
+      console.log(total, countofitems.length);
+      countofitems[index]++;
+      countofitemshandler(() => [...countofitems]);
+    }
   }
 
   return (
@@ -30,13 +36,14 @@ const Selection = (props) => {
         >
           <View>
             <Image source={icon1}></Image>
-            <Text>
-              {item.name}
-              {index}
-            </Text>
+            <View style={styles.name}>
+              <Text>{item.name}</Text>
+              <Text>{item.price}р</Text>
+            </View>
           </View>
-          <View style={styles.qty}>
-            <Text>{countofitems[index]}</Text>
+
+          <View style={countofitems[index] > 0 ? styles.qty : styles.hide}>
+            <Text style={styles.qtytext}>{countofitems[index]}</Text>
           </View>
         </TouchableOpacity>
       ))}
@@ -60,7 +67,21 @@ const styles = StyleSheet.create({
   },
   qty: {
     backgroundColor: "red",
-    fontSize: 18,
+    borderRadius: 15,
+    paddingHorizontal: 5,
+    elevation: 15,
+    position: "absolute",
+  },
+  qtytext: {
+    Color: "white",
+    fontSize: 20,
+  },
+  name: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  hide: {
+    display: "none",
   },
 });
 
