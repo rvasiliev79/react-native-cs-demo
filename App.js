@@ -10,11 +10,13 @@ export default function App() {
     <View style={styles.container}>
       <Header title="YOUR FAVOURITE COFFEESHOP" />
 
-      <Selection items={a} />
+      <Selection items={a} countofitems={countofitems} />
 
       <Footer
         hinttext="Your delivery address please"
         buttontext="ORDER"
+        items={a}
+        countofitems={countofitems}
       ></Footer>
 
       <StatusBar style="auto" />
@@ -28,7 +30,7 @@ global.a = [
   { id: 2, name: "Latte", price: 30, qty: 0 },
   { id: 3, name: "Frap", price: 40, qty: 0 },
   { id: 4, name: "Americano", price: 50, qty: 0 },
-  { id: 5, name: "Mikshake", price: 60, qty: 0 },
+  { id: 5, name: "Milkshake", price: 60, qty: 0 },
 ];
 global.countofitems = [0, 0, 0, 0, 0, 0];
 

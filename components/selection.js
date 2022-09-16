@@ -10,18 +10,17 @@ import {
 import icon1 from "../assets/cafe-black-48dp.png";
 
 const Selection = (props) => {
-  const [countofitems, countofitemshandler] = useState([0, 0, 0, 0, 0, 0]);
+  const [countofitems, countofitemshandler] = useState(props.countofitems);
 
   function itemonpress(index) {
-    const total = countofitems.reduce(
+    const total = props.countofitems.reduce(
       (sum, currentval) => (sum = sum + currentval),
       0
     );
     if (total > 20) {
       Alert.alert("You cannot drink more then 20 cups %)");
     } else {
-      console.log(total, countofitems.length);
-      countofitems[index]++;
+      props.countofitems[index]++;
       countofitemshandler(() => [...countofitems]);
     }
   }
@@ -42,8 +41,10 @@ const Selection = (props) => {
             </View>
           </View>
 
-          <View style={countofitems[index] > 0 ? styles.qty : styles.hide}>
-            <Text style={styles.qtytext}>{countofitems[index]}</Text>
+          <View
+            style={props.countofitems[index] > 0 ? styles.qty : styles.hide}
+          >
+            <Text style={styles.qtytext}>{props.countofitems[index]}</Text>
           </View>
         </TouchableOpacity>
       ))}
