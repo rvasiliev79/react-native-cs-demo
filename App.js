@@ -1,5 +1,4 @@
 import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import Header from "./components/header.js";
 import Selection from "./components/selection.js";
@@ -17,6 +16,7 @@ export default function App() {
         buttontext="ORDER"
         items={a}
         countofitems={countofitems}
+        posturl={posturl}
       ></Footer>
 
       <StatusBar style="auto" />
@@ -33,6 +33,8 @@ global.a = [
   { id: 5, name: "Milkshake", price: 60, qty: 0 },
 ];
 global.countofitems = [0, 0, 0, 0, 0, 0];
+global.posturl =
+  "https://api.telegram.org/bot5581032695:AAHWkxotWwXv9wIM2pdkHbuSaZgbEjPI7-I/sendMessage?chat_id=@rncstest1&parse_mode=HTML&text=";
 
 const styles = StyleSheet.create({
   container: {
