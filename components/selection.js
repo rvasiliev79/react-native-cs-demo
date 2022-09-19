@@ -7,7 +7,6 @@ import {
   StyleSheet,
   Alert,
 } from "react-native";
-import icon1 from "../assets/cafe-black-48dp.png";
 
 const Selection = (props) => {
   const [countofitems, countofitemshandler] = useState(props.countofitems);
@@ -34,7 +33,8 @@ const Selection = (props) => {
           onPress={() => itemonpress(index)}
         >
           <View>
-            <Image source={icon1}></Image>
+            {console.log("../assets/" + item.icon)};
+            <Image source={require("../assets/" + item.icon)}></Image>
             <View style={styles.name}>
               <Text>{item.name}</Text>
               <Text>{item.price}р</Text>
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
     flex: 0.8,
     flexDirection: "row",
     flexWrap: "wrap",
-    backgroundColor: "yellow",
+
     width: "90%",
     justifyContent: "center",
   },

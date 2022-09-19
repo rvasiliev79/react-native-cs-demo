@@ -13,7 +13,8 @@ const styles = StyleSheet.create({
     flex: 0.15,
     alignItems: "center",
     width: "90%",
-    backgroundColor: "blue",
+    backgroundColor: "antiquewhite",
+    elevation: 5,
     justifyContent: "center",
   },
 
@@ -22,7 +23,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     fontWeight: "Bold",
     fontStyle: "italic",
-    color: "seashell",
+    color: "darkslategrey",
     textshadowcolor: "saddlebrown",
     textShadowRadius: 5,
     textShadowOffset: { width: 4, height: 4 },

@@ -76,7 +76,7 @@ const Footer = (props) => {
     );
     props.countofitems.fill(0);
     refOfTextInput.clear();
-    countofitemshandler(() => [...countofitems]);
+    //countofitemshandler(() => [...countofitems]);
   }
 
   return (

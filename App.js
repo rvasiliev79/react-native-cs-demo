@@ -25,12 +25,12 @@ export default function App() {
 }
 
 global.a = [
-  { id: 0, name: "Expresso", price: 10, qty: 0 },
-  { id: 1, name: "Cappucino", price: 20, qty: 0 },
-  { id: 2, name: "Latte", price: 30, qty: 0 },
-  { id: 3, name: "Frap", price: 40, qty: 0 },
-  { id: 4, name: "Americano", price: 50, qty: 0 },
-  { id: 5, name: "Milkshake", price: 60, qty: 0 },
+  { id: 0, name: "Espresso", price: 10, icon: "iconespresso.png", qty: 0 },
+  { id: 1, name: "Cappucino", price: 20, icon: "cafe-black-48dp.png", qty: 0 },
+  { id: 2, name: "Latte", price: 30, icon: "cafe-black-48dp.png", qty: 0 },
+  { id: 3, name: "Frap", price: 40, icon: "cafe-black-48dp.png", qty: 0 },
+  { id: 4, name: "Americano", price: 50, icon: "cafe-black-48dp.png", qty: 0 },
+  { id: 5, name: "Milkshake", price: 60, icon: "cafe-black-48dp.png", qty: 0 },
 ];
 global.countofitems = [0, 0, 0, 0, 0, 0];
 global.posturl =
@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 25,
     paddingBottom: 15,
-    backgroundColor: "teal",
+    backgroundColor: "antiquewhite",
     alignItems: "center",
     justifyContent: "center",
   },
