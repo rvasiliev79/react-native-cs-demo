@@ -1,5 +1,12 @@
-import { useState } from "react";
-import { View, StyleSheet, TextInput, Button, Alert } from "react-native";
+import React, { useState } from "react";
+import {
+  View,
+  StyleSheet,
+  TextInput,
+  Button,
+  Alert,
+  Keyboard,
+} from "react-native";
 
 const Footer = (props) => {
   const [AddressValue, setAddressValue] = useState("");
@@ -11,6 +18,8 @@ const Footer = (props) => {
   }
 
   function OrderButtonHandler() {
+    Keyboard.dismiss();
+
     if (AddressValue.trim() == "") {
       Alert.alert("Oops", "Please specify where to deliver your order");
       return;
@@ -24,6 +33,10 @@ const Footer = (props) => {
     totalamount = 0;
     countofitems.forEach(appendtomessage);
     msg +=
+      "------------------------------\n" +
+      "Address: " +
+      AddressValue +
+      "\n" +
       "------------------------------\n" +
       "Checkout total: " +
       totalamount +
@@ -55,9 +68,15 @@ const Footer = (props) => {
   }
 
   function sendtotelegram() {
-    console.log(props.posturl + msg);
-    exitcode = fetch(props.posturl + msg);
-    console.log(exitcode);
+    const response = fetch(props.posturl + msg);
+    console.log(response);
+    Alert.alert(
+      "Thank you",
+      "You order was successfuly submitted to the shop. Selection will now reset"
+    );
+    props.countofitems.fill(0);
+    refOfTextInput.clear();
+    countofitemshandler(() => [...countofitems]);
   }
 
   return (
@@ -66,6 +85,9 @@ const Footer = (props) => {
         style={styles.inputtext}
         placeholder={props.hinttext}
         onChangeText={AddressHandler}
+        ref={(ref) => {
+          this.refOfTextInput = ref;
+        }}
       />
       <Button title={props.buttontext} onPress={OrderButtonHandler} />
     </View>
