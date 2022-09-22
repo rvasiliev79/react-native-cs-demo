@@ -1,9 +1,12 @@
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, Image, StyleSheet, ImageBackground } from "react-native";
+import imgbackground from "../assets/images/headerback.jpg";
 
 const Header = (props) => {
   return (
     <View style={styles.headerview}>
-      <Text style={styles.headertext}>{props.title}</Text>
+      <ImageBackground source={imgbackground} style={{ opacity: 0.5 }}>
+        <Text style={styles.headertext}>{props.title}</Text>
+      </ImageBackground>
     </View>
   );
 };
@@ -13,7 +16,7 @@ const styles = StyleSheet.create({
     flex: 0.15,
     alignItems: "center",
     width: "90%",
-    backgroundColor: "antiquewhite",
+    backgroundColor: "moccasin",
     elevation: 5,
     justifyContent: "center",
   },

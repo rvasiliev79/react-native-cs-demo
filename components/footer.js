@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     flex: 0.05,
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "red",
+    backgroundColor: "moccasin",
     justifyContent: "space-between",
     width: "90%",
   },

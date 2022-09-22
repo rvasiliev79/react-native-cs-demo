@@ -8,8 +8,24 @@ import {
   Alert,
 } from "react-native";
 
+//Below are the images with coffee import, make them 150x150 max
+import imgcoffee1 from "../assets/images/espresso-1.png";
+import imgcoffee2 from "../assets/images/cappuccino-2.png";
+import imgcoffee3 from "../assets/images/latte-3.png";
+import imgcoffee4 from "../assets/images/irish-4.png";
+import imgcoffee5 from "../assets/images/americano-5.png";
+import imgcoffee6 from "../assets/images/milkshake-6.png";
+
 const Selection = (props) => {
   const [countofitems, countofitemshandler] = useState(props.countofitems);
+  const icons = [
+    imgcoffee1,
+    imgcoffee2,
+    imgcoffee3,
+    imgcoffee4,
+    imgcoffee5,
+    imgcoffee6,
+  ];
 
   function itemonpress(index) {
     const total = props.countofitems.reduce(
@@ -33,8 +49,7 @@ const Selection = (props) => {
           onPress={() => itemonpress(index)}
         >
           <View>
-            {console.log("../assets/" + item.icon)};
-            <Image source={require("../assets/" + item.icon)}></Image>
+            <Image style={styles.image} source={icons[index]}></Image>
             <View style={styles.name}>
               <Text>{item.name}</Text>
               <Text>{item.price}р</Text>
@@ -57,15 +72,22 @@ const styles = StyleSheet.create({
     flex: 0.8,
     flexDirection: "row",
     flexWrap: "wrap",
-
+    alignContent: "center",
     width: "90%",
-    justifyContent: "center",
   },
 
   item: {
+    marginHorizontal: 15,
     padding: 10,
     width: "40%",
   },
+
+  image: {
+    alignSelf: "center",
+    height: 130,
+    resizeMode: "contain",
+  },
+
   qty: {
     backgroundColor: "red",
     borderRadius: 15,
