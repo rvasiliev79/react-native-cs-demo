@@ -9,13 +9,12 @@ export default function App() {
     <View style={styles.container}>
       <Header title="pick your coffee" />
 
-      <Selection items={a} countofitems={countofitems} />
+      <Selection items={a} />
 
       <Footer
         hinttext="Your delivery address please"
         buttontext="ORDER"
         items={a}
-        countofitems={countofitems}
         posturl={posturl}
       ></Footer>
 
@@ -32,7 +31,7 @@ global.a = [
   { id: 4, name: "Americano", price: 50, qty: 0 },
   { id: 5, name: "Milkshake", price: 60, qty: 0 },
 ];
-global.countofitems = [0, 0, 0, 0, 0, 0];
+
 global.posturl =
   "https://api.telegram.org/bot5581032695:AAHWkxotWwXv9wIM2pdkHbuSaZgbEjPI7-I/sendMessage?chat_id=@rncstest1&parse_mode=HTML&text=";
 

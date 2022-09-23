@@ -17,7 +17,7 @@ import imgcoffee5 from "../assets/images/americano-5.png";
 import imgcoffee6 from "../assets/images/milkshake-6.png";
 
 const Selection = (props) => {
-  const [countofitems, countofitemshandler] = useState(props.countofitems);
+  const [countofitems, countofitemshandler] = useState([0, 0, 0, 0, 0, 0]);
   const icons = [
     imgcoffee1,
     imgcoffee2,
@@ -28,16 +28,30 @@ const Selection = (props) => {
   ];
 
   function itemonpress(index) {
-    const total = props.countofitems.reduce(
-      (sum, currentval) => (sum = sum + currentval),
-      0
-    );
+    const total = ReturnTotalCount(countofitems);
+
     if (total > 20) {
       Alert.alert("You cannot drink more then 20 cups %)");
     } else {
-      props.countofitems[index]++;
+      countofitems[index]++;
+      props.items[index].qty++;
+      console.log(props.items);
       countofitemshandler(() => [...countofitems]);
     }
+  }
+
+  function ReturnTotalCount(countofitems) {
+    return countofitems.reduce(
+      (sum, currentval) => (sum = sum + currentval),
+      0
+    );
+  }
+
+  function ClearButtonHandler() {
+    countofitemshandler(() => [0, 0, 0, 0, 0, 0]);
+    props.items.forEach((element) => {
+      element.qty = 0;
+    });
   }
 
   return (
@@ -56,13 +70,22 @@ const Selection = (props) => {
             </View>
           </View>
 
-          <View
-            style={props.countofitems[index] > 0 ? styles.qty : styles.hide}
-          >
-            <Text style={styles.qtytext}>{props.countofitems[index]}</Text>
+          <View style={countofitems[index] > 0 ? styles.qty : styles.hide}>
+            <Text style={styles.qtytext}>{countofitems[index]}</Text>
           </View>
         </TouchableOpacity>
       ))}
+
+      <TouchableOpacity
+        style={
+          ReturnTotalCount(countofitems) > 0
+            ? [styles.qty, styles.buttonclear]
+            : styles.hide
+        }
+        onPress={() => ClearButtonHandler()}
+      >
+        <Text style={styles.qtytext}>X</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -89,19 +112,23 @@ const styles = StyleSheet.create({
   },
 
   qty: {
-    backgroundColor: "red",
+    backgroundColor: "crimson",
     borderRadius: 15,
-    paddingHorizontal: 5,
+    paddingHorizontal: 7,
     elevation: 15,
     position: "absolute",
   },
   qtytext: {
-    Color: "white",
     fontSize: 20,
   },
   name: {
     flexDirection: "row",
     justifyContent: "space-between",
+  },
+  buttonclear: {
+    position: "absolute",
+    right: 5,
+    top: 5,
   },
   hide: {
     display: "none",

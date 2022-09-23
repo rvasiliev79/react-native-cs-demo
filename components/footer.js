@@ -31,7 +31,10 @@ const Footer = (props) => {
     }
     msg = "";
     totalamount = 0;
-    countofitems.forEach(appendtomessage);
+    props.items.forEach((element) => {
+      appendtomessage(element);
+    });
+
     msg +=
       "------------------------------\n" +
       "Address: " +
@@ -60,23 +63,22 @@ const Footer = (props) => {
     ]);
   }
 
-  function appendtomessage(item, pos) {
-    if (item > 0) {
-      msg += a[pos].name + " " + item + " cup(s) at " + a[pos].price + "р. \n";
-      totalamount += a[pos].price * props.countofitems[pos];
+  function appendtomessage(item) {
+    if (item.qty > 0) {
+      msg += item.name + " " + item.qty + " cup(s) at " + item.price + "р. \n";
+      totalamount += item.price * item.qty;
     }
   }
 
   function sendtotelegram() {
+    console.log(msg);
     const response = fetch(props.posturl + msg);
     console.log(response);
     Alert.alert(
       "Thank you",
-      "You order was successfuly submitted to the shop. Selection will now reset"
+      "You order was successfuly submitted to the shop. Please clear the selection manually"
     );
-    props.countofitems.fill(0);
     refOfTextInput.clear();
-    //countofitemshandler(() => [...countofitems]);
   }
 
   return (
