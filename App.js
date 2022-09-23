@@ -7,7 +7,7 @@ import Footer from "./components/footer.js";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Header title="YOUR FAVOURITE COFFEESHOP" />
+      <Header title="pick your coffee" />
 
       <Selection items={a} countofitems={countofitems} />
 

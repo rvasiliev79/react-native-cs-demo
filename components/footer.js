@@ -96,7 +96,7 @@ const Footer = (props) => {
 
 const styles = StyleSheet.create({
   footerview: {
-    flex: 0.05,
+    flex: 0.06,
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: "moccasin",
