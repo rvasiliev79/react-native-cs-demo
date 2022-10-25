@@ -35,7 +35,6 @@ const Selection = (props) => {
     } else {
       countofitems[index]++;
       props.items[index].qty++;
-      console.log(props.items);
       countofitemshandler(() => [...countofitems]);
     }
   }

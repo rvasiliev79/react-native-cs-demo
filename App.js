@@ -1,5 +1,7 @@
 import { StatusBar } from "expo-status-bar";
 import { StyleSheet, View } from "react-native";
+import * as SplashScreen from "expo-splash-screen";
+import { REACT_APP_TELEGRAMBOT_API_KEY } from "@env";
 import Header from "./components/header.js";
 import Selection from "./components/selection.js";
 import Footer from "./components/footer.js";
@@ -23,6 +25,9 @@ export default function App() {
   );
 }
 
+SplashScreen.preventAutoHideAsync();
+setTimeout(SplashScreen.hideAsync, 2000);
+
 global.a = [
   { id: 0, name: "Espresso", price: 10, qty: 0 },
   { id: 1, name: "Cappucino", price: 20, qty: 0 },
@@ -33,7 +38,9 @@ global.a = [
 ];
 
 global.posturl =
-  "https://api.telegram.org/bot5581032695:AAHWkxotWwXv9wIM2pdkHbuSaZgbEjPI7-I/sendMessage?chat_id=@rncstest1&parse_mode=HTML&text=";
+  "https://api.telegram.org/" +
+  REACT_APP_TELEGRAMBOT_API_KEY +
+  "/sendMessage?chat_id=@rncstest1&parse_mode=HTML&text=";
 
 const styles = StyleSheet.create({
   container: {
