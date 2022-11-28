@@ -25,10 +25,6 @@ const Footer = (props) => {
       return;
     }
 
-    if (AddressValue.toLowerCase().indexOf("москва") < 0) {
-      //Alert.alert("Oops", "We only accept orders within Moscow");
-      //return;
-    }
     msg = "";
     totalamount = 0;
     props.items.forEach((element) => {
@@ -76,9 +72,8 @@ const Footer = (props) => {
     console.log(response);
     Alert.alert(
       "Thank you",
-      "You order was successfuly submitted to the shop. Please clear the selection manually"
+      "Your order was successfuly submitted to the shop. Please clear the selection manually"
     );
-    refOfTextInput.clear();
   }
 
   return (
